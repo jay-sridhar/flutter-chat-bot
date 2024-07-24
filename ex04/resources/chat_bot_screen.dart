@@ -35,50 +35,46 @@ class ChatbotScreenState extends State<ChatbotScreen> {
                 itemBuilder: (context, index) {
                   if (_isThinking && index == 0) {
                     return const ListTile(
-                        leading: CircleAvatar(
-                          child: Icon(
-                            Icons.hourglass_top,
-                            
-                          ),
+                      leading: CircleAvatar(
+                        child: Icon(
+                          Icons.hourglass_top,
                         ),
-                        title: Text(
-                          'Thinking...',
-                          style: TextStyle(
-                           
-                          ),
-                        ),
-                      );
+                      ),
+                      title: Text(
+                        'Thinking...',
+                        style: TextStyle(),
+                      ),
+                    );
                   }
                   final message = _messages[_isThinking ? index - 1 : index];
                   final isUserMessage = message['role'] == 'user';
                   return Container(
-                      alignment: isUserMessage
-                          ? Alignment.centerRight
-                          : Alignment.centerLeft,
-                      margin: const EdgeInsets.symmetric(
-                          vertical: 8, horizontal: 16),
-                      child: Container(
-                        padding: const EdgeInsets.all(12),
-                        decoration: BoxDecoration(
-                          color: isUserMessage
-                              ? Colors.deepOrange
-                              : Colors.blue[100],
-                          borderRadius: BorderRadius.circular(10),
-                        ),
-                        child: isUserMessage
-                            ? Text(
-                                message['content']!,
-                                style: const TextStyle(
-                                    color: Colors.white,
-                                    fontWeight: FontWeight.w600),
-                              )
-                            : Text(
-                                message['content']!,
-                                style:  const TextStyle(color: Colors.black87),
-                                
-                              ),
+                    alignment: isUserMessage
+                        ? Alignment.centerRight
+                        : Alignment.centerLeft,
+                    margin:
+                        const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
+                    child: Container(
+                      padding: const EdgeInsets.all(12),
+                      decoration: BoxDecoration(
+                        color: isUserMessage
+                            ? Colors.deepOrange
+                            : Colors.blue[100],
+                        borderRadius: BorderRadius.circular(10),
                       ),
-                    );
+                      child: isUserMessage
+                          ? Text(
+                              message['content']!,
+                              style: const TextStyle(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.w600),
+                            )
+                          : Text(
+                              message['content']!,
+                              style: const TextStyle(color: Colors.black87),
+                            ),
+                    ),
+                  );
                 },
               ),
             ),
@@ -156,6 +152,10 @@ class ChatbotScreenState extends State<ChatbotScreen> {
                   'role': 'assistant',
                   'content': content,
                 });
+                chatbotResponse.write(content);
+              setState(() {
+                _messages[0]['content'] = chatbotResponse.toString();
+              });
               });
               firstChunkReceived = true;
             } else {

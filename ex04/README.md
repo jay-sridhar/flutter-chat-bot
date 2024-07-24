@@ -19,13 +19,6 @@
 - State management in Flutter (again): Using `setState` to update UI based on changes in data or processing state
 - Conditional styling: Creating visually distinct message bubbles for user and assistant
 
-
-## New Features
-- Auto-scrolling: Messages automatically scroll to the top as new content is received
-- Processing indicator: An hourglass icon is displayed while waiting for the LLM's response
-- Distinct message styling: User messages are right-aligned with a deep orange background, while assistant messages are left-aligned with a light blue background
-- Improved readability: Messages are displayed in bubbles with appropriate padding and border radius
-
 ## Tips for Understanding the Code
 - The `ListView.builder` is set to `reverse: true`, which inverts the scroll direction and item order
 - The `_isThinking` variable controls the visibility of the processing indicator and affects the index calculation in the ListView

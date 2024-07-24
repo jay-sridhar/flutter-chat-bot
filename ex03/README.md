@@ -1,8 +1,8 @@
 # Exercise 3
 
 ## Objectives
-1. Integrate the mock GPT API with the chat application
-2. Implement and display streaming responses from the backend
+- Real-time display of incoming messages by integrating mock GPT with the chat application
+- Display the user and assistant's messages
 
 ## Implementation Steps
 1. Update the `chat_bot_screen.dart` file
@@ -17,16 +17,13 @@
 ## Core Concepts
 - Making asynchronous API calls in Flutter
 - Handling streaming responses from a backend
-- Managing and updating state in a StatefulWidget
+- Managing and updating state in a StatefulWidget; Real-time UI updates based on incoming data
 - Implementing dynamic list views in Flutter
-- Real-time UI updates based on incoming data
-
-## New Features
-- Real-time display of incoming messages
-- Proper formatting and display of chat history
-- Improved user experience with streaming responses
 
 ## Tips for Understanding the Code
 - Pay attention to the `_sendMessage` function and how it handles the API call
 - Notice how the `setState` method is used to update the UI in real-time
 - Observe the structure of the ListView.builder and how it renders chat messages
+
+## Resources
+- [Flutter Widgets Library](https://api.flutter.dev/flutter/widgets/widgets-library.html)
